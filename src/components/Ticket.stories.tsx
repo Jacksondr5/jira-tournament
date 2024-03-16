@@ -51,3 +51,11 @@ export const ShowCollapseButtonClosed: Story = {
     isCollapsed: true,
   },
 };
+
+export const InlineTitle: Story = {
+  args: {
+    ...defaultTicket,
+    inlineTitle: true,
+    isCollapsed: true,
+  },
+};

@@ -1,6 +1,7 @@
 import React from "react";
 import { Ticket, TicketProps } from "./Ticket";
 import { Button } from "./Button";
+import { Divider } from "./Divider";
 
 export interface BattleScreenProps {
   leftTicketProps: TicketProps;
@@ -16,9 +17,7 @@ export const BattleScreen = ({
   return (
     <div className="grid grid-cols-[9fr_4px_9fr] grid-flow-row auto-rows-max gap-12 justify-center">
       <Ticket {...leftTicketProps} />
-      <div className="flex justify-center w-full row-span-2">
-        <div className="h-full border-primary-6 border-2 w-0 rounded-md" />
-      </div>
+      <Divider className="row-span-2" />
       <Ticket {...rightTicketProps} />
       <Button
         className="bg-primary-9"

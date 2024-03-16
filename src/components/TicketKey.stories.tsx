@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { TicketKey, TicketKeyProps } from "./TicketKey";
-import { Default as DefaultTicket } from "./Ticket.stories";
 
 const meta = {
   title: "Components/Ticket Key",
