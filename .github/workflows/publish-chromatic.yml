@@ -13,22 +13,12 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Read Node.js version from .nvmrc
-        id: nvmrc
-        shell: bash
-        run: echo "NODE_VERSION=$(cat .nvmrc)" >> $GITHUB_ENV
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ steps.nvmrc.outputs.NODE_VERSION }}
-
-      - name: Setup pnpm and install dependencies
-        uses: pnpm/action-setup@v3
-        with:
-          run_install: true
+      - name: Setup CI
+        uses: ./github/actions/setup-ci
 
       - name: Publish to Chromatic
         uses: chromaui/action@latest
         with:
+          exitOnceUploaded: true
+          exitZeroOnChanges: true
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
