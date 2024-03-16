@@ -8,8 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "chromatic": "pnpm dlx chromatic --exit-zero-on-changes --exit-once-uploaded"
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "clsx": "^2.1.0",
