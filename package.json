@@ -9,7 +9,7 @@
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "chromatic": "pnpm dlx chromatic --exit-zero-on-changes"
+    "chromatic": "pnpm dlx chromatic --exit-zero-on-changes --exit-once-uploaded"
   },
   "dependencies": {
     "clsx": "^2.1.0",
