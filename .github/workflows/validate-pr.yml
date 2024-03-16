@@ -26,21 +26,27 @@ jobs:
         with:
           node-version: ${{ steps.nvmrc.outputs.NODE_VERSION }}
 
-      - name: Setup pnpm and install dependencies
-        uses: pnpm/action-setup@v3
-        with:
-          run_install: true
+      - name: Get pnpm store directory
+        id: pnpm-store
+        shell: bash
+        run: echo "PNPM_STORE=$(pnpm store path)" >> $GITHUB_OUTPUT
 
       - name: Setup cache
         uses: actions/cache@v4
         with:
           path: |
+            ${{ steps.pnpm-store.outputs.PNPM_STORE }}
             ${{ github.workspace }}/.next/cache
           # Generate a new cache whenever packages or source files change.
           key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
           # If source files changed but packages didn't, rebuild from a prior cache.
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+
+      - name: Setup pnpm and install dependencies
+        uses: pnpm/action-setup@v3
+        with:
+          run_install: true
 
       - name: Build
         run: pnpm build
