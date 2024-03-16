@@ -1,0 +1,42 @@
+name: Setup cache
+description: Generally prepares the CI environment for what it wants to do
+
+runs:
+  using: composite
+
+  steps:
+    - name: Read Node.js version from .nvmrc
+      id: nvmrc
+      shell: bash
+      run: echo "NODE_VERSION=$(cat .nvmrc)" >> $GITHUB_ENV
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ steps.nvmrc.outputs.NODE_VERSION }}
+
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v3
+      with:
+        run_install: false
+
+    - name: Get pnpm store directory
+      id: pnpm-store
+      shell: bash
+      run: echo "PNPM_STORE=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+    - name: Setup cache
+      uses: actions/cache@v4
+      with:
+        path: |
+          ${{ steps.pnpm-store.outputs.PNPM_STORE }}
+          ${{ github.workspace }}/.next/cache
+        # Generate a new cache whenever packages or source files change.
+        key: ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+        # If source files changed but packages didn't, rebuild from a prior cache.
+        restore-keys: |
+          ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
+
+    - name: Install dependencies
+      shell: base
+      run: pnpm install --frozen-lockfile
