@@ -24,7 +24,7 @@ export const Ticket = ({
   ticketKey,
   title,
 }: TicketProps) => (
-  <div className="bg-primary-3 py-4 px-6 rounded-lg text-gray-12">
+  <div className="bg-primary-3 py-6 px-6 rounded-lg text-gray-12">
     <div>
       <span className="flex gap-1">
         <Image src={iconUrl} alt="ticket type icon" height={20} width={20} />
@@ -45,7 +45,7 @@ export const Ticket = ({
         </button>
       )}
     </div>
-    <span className="text-xl font-bold ">{title}</span>
+    <span className="text-xl font-bold">{title}</span>
     {!isCollapsed && (
       <>
         <hr className="my-2 bg-gray-12" />

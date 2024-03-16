@@ -21,12 +21,12 @@ export const BattleScreen = ({
       </div>
       <Ticket {...rightTicketProps} />
       <Button
-        className=""
+        className="bg-primary-9"
         content="Select Winner"
         onClick={() => onWinnerSelected(leftTicketProps.ticketKey)}
       />
       <Button
-        className="col-start-3"
+        className="col-start-3 bg-primary-9"
         content="Select Winner"
         onClick={() => onWinnerSelected(rightTicketProps.ticketKey)}
       />
