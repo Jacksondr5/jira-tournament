@@ -14,15 +14,15 @@ const preview: Preview = {
   },
 
   decorators: [
-    withThemeByDataAttribute({
-      themes: {
-        // nameOfTheme: 'dataAttributeForTheme',
-        light: "",
-        dark: "dark",
-      },
-      defaultTheme: "light",
-      // dataAttribute: "data-theme",
-    }),
+    // withThemeByDataAttribute({
+    //   themes: {
+    //     // nameOfTheme: 'dataAttributeForTheme',
+    //     light: "",
+    //     dark: "dark",
+    //   },
+    //   defaultTheme: "light",
+    //   // dataAttribute: "data-theme",
+    // }),
   ],
 };
 

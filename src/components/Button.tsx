@@ -11,7 +11,7 @@ export const Button = ({ className, content, onClick }: ButtonProps) => (
   <button
     onClick={onClick}
     className={twMerge(
-      "px-5 py-3 w-full bg-white rounded-md font-semibold text-black",
+      "px-5 py-3 w-full rounded-md font-semibold text-gray-12",
       className
     )}
   >
