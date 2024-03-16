@@ -1,37 +1,35 @@
 import { Chevron } from "../icons";
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { TicketKey, TicketKeyProps } from "./TicketKey";
+import { twMerge } from "tailwind-merge";
 
-export interface TicketProps {
+export interface TicketProps extends TicketKeyProps {
+  className?: string;
   description: string;
-  iconUrl: string;
   isCollapsed?: boolean;
-  link: string;
   onCollapseButtonClick?: () => void;
   showCollapseButton?: boolean;
-  ticketKey: string;
   title: string;
 }
 
 export const Ticket = ({
+  className,
   description,
-  iconUrl,
   isCollapsed,
-  link,
   onCollapseButtonClick,
   showCollapseButton,
-  ticketKey,
   title,
+  ...props
 }: TicketProps) => (
-  <div className="bg-primary-3 py-6 px-6 rounded-lg text-gray-12">
+  <div
+    className={twMerge(
+      "bg-primary-3 py-6 px-6 rounded-lg text-gray-12",
+      className
+    )}
+  >
     <div>
-      <span className="flex gap-1">
-        <Image src={iconUrl} alt="ticket type icon" height={20} width={20} />
-        <Link href={link} className="font-normal text-gray-11 hover:underline">
-          {ticketKey}
-        </Link>
-      </span>
+      <TicketKey {...props} />
       {showCollapseButton && (
         <button
           onClick={onCollapseButtonClick}

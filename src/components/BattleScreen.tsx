@@ -5,7 +5,7 @@ import { Button } from "./Button";
 export interface BattleScreenProps {
   leftTicketProps: TicketProps;
   rightTicketProps: TicketProps;
-  onWinnerSelected: (winner: TicketProps["ticketKey"]) => void;
+  onWinnerSelected: (winner: TicketProps["id"]) => void;
 }
 
 export const BattleScreen = ({
@@ -23,12 +23,12 @@ export const BattleScreen = ({
       <Button
         className="bg-primary-9"
         content="Select Winner"
-        onClick={() => onWinnerSelected(leftTicketProps.ticketKey)}
+        onClick={() => onWinnerSelected(leftTicketProps.id)}
       />
       <Button
         className="col-start-3 bg-primary-9"
         content="Select Winner"
-        onClick={() => onWinnerSelected(rightTicketProps.ticketKey)}
+        onClick={() => onWinnerSelected(rightTicketProps.id)}
       />
     </div>
   );

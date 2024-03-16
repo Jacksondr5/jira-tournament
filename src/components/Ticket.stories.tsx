@@ -20,10 +20,10 @@ const defaultTicket: TicketProps = {
   This will benefit users by providing them with more advantages as they use the platform and will encourage new users to use the platform even more.
   
   We will know if this is true if the number of travel booked per user per year significantly increases after the first six months of experimentation.`,
-  ticketKey: "PE-5",
-  link: "https://jacksondr5.atlassian.net/browse/PE-5",
   iconUrl:
     "https://jacksondr5.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10322?size=medium",
+  id: "PE-5",
+  link: "https://jacksondr5.atlassian.net/browse/PE-5",
 };
 
 export const Default: Story = {
